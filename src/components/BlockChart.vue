@@ -4,7 +4,7 @@
       <div>
         <h2
           v-if="title"
-          class="text-white font-bold text-[30px]"
+          class="text-white font-bold text-[20px]"
           :class="[classTitle]"
         >
           {{ title }}

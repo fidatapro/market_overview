@@ -1,7 +1,7 @@
 <template>
-  <BlockChart title="Top Trending" class="h-full" classTitle="mb-[40px]">
+  <BlockChart title="Top Trending Coins" class="h-full" classTitle="mb-[40px]">
     <table class="w-full text-left border-collapse">
-      <tbody class="align-baseline text-white">
+      <tbody class="align-baseline text-white text-[15px]">
         <tr v-for="(item, index) in top_trendings" :key="`tt-${index}`">
           <td
             :class="[index != top_trendings.length - 1 ? `border-b` : '']"
@@ -36,7 +36,7 @@
             :style="getStyle(0)" -->
           <td
             :class="[index != top_trendings.length - 1 ? `border-b` : '']"
-            class="font-bold align-middle border-[#535355ba] dark:border-slate-400/1 text-[#095df1] text-right"
+            class="font-bold align-middle border-[#535355ba] dark:border-slate-400/1 text-white text-right"
           >
             $ {{ handlerPrice(item.item.price_btc) }}
           </td>

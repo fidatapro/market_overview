@@ -35,7 +35,14 @@
             :api="DOM_API"
             key-field="stablecoinDominance"
             title="Stablecoin.Dom"
-          />
+          >
+            <template #title>
+              <div class="flex flex-col items-center">
+                <div>Stablecoin</div>
+                <div>Dom</div>
+              </div>
+            </template>
+          </Dom>
         </div>
         <div>
           <DominanceRatio />

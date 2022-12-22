@@ -1,10 +1,10 @@
 <template>
-  <BlockChart title="Dominance Ratio">
+  <BlockChart>
     <HighChart
       is-stock-chart
       id="dominance-ratio"
       :options="options"
-      height="400px"
+      height="600px"
     />
   </BlockChart>
 </template>
@@ -22,7 +22,7 @@ export default {
   data: () => ({
     seriesOptions: [],
     legendX: 0,
-    legendY: -39,
+    legendY: -29,
     verticalAlign: "top",
   }),
   computed: {
@@ -33,6 +33,15 @@ export default {
         },
         chart: {
           backgroundColor: "#2e2e33",
+        },
+        title: {
+          text: "Dominance Ratio",
+          style: {
+            color: "#fff",
+            fontSize: "20px",
+            fontWeight: "bold",
+          },
+          align: "left",
         },
         legend: {
           enabled: true,
@@ -45,6 +54,7 @@ export default {
           symbolHeight: 30,
           itemStyle: {
             color: "#fff",
+            fontWeight: "normal",
           },
           itemHoverStyle: {
             color: "#fff",
@@ -103,23 +113,23 @@ export default {
   },
   created() {
     this.fetchData();
-    window.addEventListener("resize", this.checkSizeChange);
+    // window.addEventListener("resize", this.checkSizeChange);
   },
   beforeDestroy() {
-    window.removeEventListener("resize", this.checkSizeChange);
+    // window.removeEventListener("resize", this.checkSizeChange);
   },
   methods: {
-    checkSizeChange() {
-      if (window.innerHeight < 1280) {
-        this.legendX = 0;
-        this.legendY = -58;
-        this.verticalAlign = "bottom";
-      } else {
-        this.legendX = 0;
-        this.legendY = -39;
-        this.verticalAlign = "top";
-      }
-    },
+    // checkSizeChange() {
+    //   if (window.innerHeight < 1280) {
+    //     this.legendX = 0;
+    //     this.legendY = -58;
+    //     this.verticalAlign = "bottom";
+    //   } else {
+    //     this.legendX = 0;
+    //     this.legendY = -39;
+    //     this.verticalAlign = "top";
+    //   }
+    // },
     async fetchData() {
       let btc = {
         name: "BTC.Dom",

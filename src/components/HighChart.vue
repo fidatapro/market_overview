@@ -36,7 +36,7 @@ export default {
       default: "300px",
     },
     isStockChart: Boolean,
-    loading: Boolean
+    loading: Boolean,
   },
   data: () => ({
     prefix: "highchart",
@@ -61,7 +61,7 @@ export default {
           r: 8,
           style: {
             color: "#fff",
-            fontWeight: "bold",
+            fontWeight: "normal",
           },
           states: {
             hover: {
@@ -71,6 +71,7 @@ export default {
               fill: "#404044",
               style: {
                 color: "white",
+                fontWeight: "normal",
               },
             },
             disabled: { fontWeight: "normal" },
@@ -81,7 +82,7 @@ export default {
         },
         labelStyle: {
           color: "#fff",
-          fontWeight: "bold",
+          fontWeight: "normal",
         },
       },
     },
@@ -98,16 +99,16 @@ export default {
       deep: true,
     },
     loading: {
-      handler(val){
-        if(this.highChart){
-          if(val){
+      handler(val) {
+        if (this.highChart) {
+          if (val) {
             this.highChart.showLoading();
-          }else{
+          } else {
             this.highChart.hideLoading();
           }
         }
-      }
-    }
+      },
+    },
   },
   computed: {
     idChart() {
@@ -200,5 +201,10 @@ export default {
     box-shadow: 0 -2em;
     height: 5em;
   }
+}
+</style>
+<style scoped>
+/deep/ input.highcharts-range-selector{
+  color-scheme: dark;
 }
 </style>

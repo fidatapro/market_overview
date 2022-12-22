@@ -2,11 +2,11 @@
   <BlockChart id="total-market-cap" title="Total market cap" class="h-full">
     <template #subtitle>
       <div class="flex text-white items-center">
-        <div class="text-[20px] font-bold mr-1">
+        <div class="text-[15px] font-bold mr-1">
           {{ formatBSD(totalCap) }}
         </div>
-        <div class="text-[20px] mr-2">USD</div>
-        <div :style="style" class="font-bold text-[20px]">
+        <div class="text-[15px] mr-2">USD</div>
+        <div :style="style" class="font-bold text-[15px]">
           {{ roundValue(persion, 2) }} %
         </div>
       </div>
@@ -15,7 +15,7 @@
       is-stock-chart
       id="total-market-cap"
       :options="options"
-      height="100%"
+      height="550px"
     />
   </BlockChart>
 </template>

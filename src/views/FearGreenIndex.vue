@@ -5,7 +5,7 @@
         ref="highchart"
         id="fear-green-index"
         :options="options"
-        height="330px"
+        height="unset"
       />
       <div class="statistical">
         <div class="statistical-content">
@@ -67,7 +67,7 @@ export default {
     dataLastMonth: null,
     seriesData: [80],
     seriesFormat: "{y}",
-    sizeChart: "90%",
+    sizeChart: "95%",
 
   }),
   created() {
@@ -96,7 +96,7 @@ export default {
           text: "Fear & Greed Index",
           style: {
             color: "#FFFFFF",
-            fontSize: "30px",
+            fontSize: "20px",
             fontWeight: "bold",
           },
         },
@@ -206,13 +206,13 @@ export default {
       if (window.innerWidth < 1024) {
         this.sizeChart = "360px";
       } else if(window.innerWidth < 1250){
-        this.sizeChart = "100%"
+        this.sizeChart = "98%"
       }else if(window.innerWidth < 1441){
-        this.sizeChart = "110%"
+        this.sizeChart = "98%"
       }else if(window.innerWidth < 1580){
-        this.sizeChart = "105%"
+        this.sizeChart = "98%"
       }else {
-        this.sizeChart = "85%";
+        this.sizeChart = "90%";
       }
     },
     async fetchData() {

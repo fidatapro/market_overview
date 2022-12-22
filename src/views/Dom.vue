@@ -3,19 +3,19 @@
     <div class="flex h-[75px]">
       <!-- <div class="flex"> -->
       <div>
-        <h2 class="text-white font-bold text-[30px]">
-          {{ title }}
+        <h2 class="text-white font-bold text-[20px]">
+          <slot name="title">
+            {{ title }}
+          </slot>
         </h2>
-        <div class="text-white text-[20px]" v-if="price">
+        <div class="text-white text-[15px]" v-if="price">
           {{ price && handlerFormatUSD(roundValue(price, 1)) }}
-          <span class="ml-2" :style="style">
-            {{change24h}} %
-          </span>
+          <span class="ml-2" :style="style"> {{ change24h }} % </span>
         </div>
       </div>
-    </div>
-    <div class="text-center text-[45px] font-bold" :style="style">
-      {{ handlerPersion() }}
+      <div class="text-center text-[30px] font-bold align-top leading-[30px] ml-2" :style="style">
+        {{ handlerPersion() }}
+      </div>
     </div>
   </BlockChart>
 </template>
