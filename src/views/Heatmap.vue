@@ -5,6 +5,8 @@
       id="heat-map"
       :options="options"
       height="calc(100vh - 100px)"
+      ref="highchart"
+      :function-fire-chart="functionFireChart"
     />
   </BlockChart>
 </template>
@@ -24,8 +26,6 @@ let highcharts = require("highcharts");
 require("highcharts/highcharts-more")(highcharts);
 require("highcharts/modules/accessibility")(highcharts);
 require("highcharts/modules/exporting")(highcharts);
-let originalColor = null;
-var isDrill = false;
 let groups = [
   {
     indexS: 0,
@@ -60,9 +60,10 @@ export default {
       meta: true,
     },
     keyChange: 1,
-    intervalTime: 60 * 1000,
+    intervalTime: 20 * 1000,
     interval: null,
     loading: false,
+    functionFireChart: null,
   }),
   computed: {
     options() {
@@ -83,7 +84,7 @@ export default {
           borderWidth: 0,
           shadow: false,
           padding: 0,
-          hideDelay:0,
+          hideDelay: 0,
           formatter: function () {
             let key = this.point.parent ? this.point.parent : this.point.id;
             let group = groups.find((x) => {
@@ -156,6 +157,17 @@ export default {
             `;
           },
         },
+        navigation: {
+          breadcrumbs: {
+            events: {
+              click: function (button, breadcrumbs) {
+                if (button.target.innerHTML == "Heatmap") {
+                  sessionStorage.setItem("drill", null);
+                }
+              },
+            },
+          },
+        },
         drilldown: {
           breadcrumbs: {
             buttonTheme: {
@@ -170,6 +182,7 @@ export default {
         },
         series: [
           {
+            id: "heatmap",
             name: "Heatmap",
             point: {
               events: {
@@ -215,6 +228,7 @@ export default {
                     return x.key == key;
                   });
                   if (group) {
+                    sessionStorage.setItem("drill", key);
                     this.series.onClickDrillToNode({
                       point: this.series.data[group.indexS],
                     });
@@ -281,7 +295,7 @@ export default {
                     let isShow =
                       fontSize != 0 &&
                       this.point.shapeArgs.height > (fontSize + 5) * 3 &&
-                      this.point.shapeArgs.width > (fontSize + 2) * 2;
+                      this.point.shapeArgs.width > (fontSize + 5) * 3;
                     let styleName = isShow
                       ? `font-size:${fontSize * 3}px;`
                       : "";
@@ -319,6 +333,7 @@ export default {
   async created() {
     try {
       this.loading = true;
+      sessionStorage.setItem("drill", null);
       await this.fetchDataV2();
     } finally {
       this.loading = false;
@@ -413,6 +428,13 @@ export default {
             dataresult.push(d);
           }
         });
+        this.functionFireChart = function (chart) {
+          if (sessionStorage.getItem("drill")) {
+            this.fireEvent(chart.series[0], "click", {
+              point: chart.get(sessionStorage.getItem("drill")),
+            });
+          }
+        };
         this.data = dataresult;
         groups.forEach((g, i) => {
           groups[i].data = groups[i].data.sort((a, b) => b.value - a.value);
@@ -443,6 +465,10 @@ export default {
   fill: transparent !important;
 }
 /deep/.highcharts-button-box {
+  stroke: #fff !important;
+}
+/deep/.highcharts-button-hover text {
   fill: #fff !important;
+  color: #fff !important;
 }
 </style>

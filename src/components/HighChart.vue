@@ -37,6 +37,7 @@ export default {
     },
     isStockChart: Boolean,
     loading: Boolean,
+    functionFireChart: Function,
   },
   data: () => ({
     prefix: "highchart",
@@ -128,7 +129,11 @@ export default {
         };
         this.highChart = new HighchartStock.stockChart(this.idChart, options);
       } else {
-        this.highChart = new Highcharts.chart(this.idChart, options);
+        this.highChart = new Highcharts.chart(
+          this.idChart,
+          options,
+          this.functionFireChart && this.functionFireChart.bind(HighchartStock)
+        );
       }
     },
   },
@@ -204,7 +209,7 @@ export default {
 }
 </style>
 <style scoped>
-/deep/ input.highcharts-range-selector{
+/deep/ input.highcharts-range-selector {
   color-scheme: dark;
 }
 </style>
