@@ -22,7 +22,7 @@ export default {
   data: () => ({
     seriesOptions: [],
     legendX: 0,
-    legendY: -29,
+    legendY: -39,
     verticalAlign: "top",
   }),
   computed: {
