@@ -1,5 +1,12 @@
 <template>
-  <BlockChart title="Top Trending Coins" class="h-full" classTitle="mb-[40px]">
+  <BlockChart class="h-full">
+    <template #title>
+      <div class="text-center w-full">
+        <h2 class="text-white font-bold text-[20px] pt-[30px] pb-[10px]">
+          Top Trending Coins
+        </h2>
+      </div>
+    </template>
     <table class="w-full text-left border-collapse">
       <tbody class="align-baseline text-white text-[15px]">
         <tr v-for="(item, index) in top_trendings" :key="`tt-${index}`">

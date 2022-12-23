@@ -1,6 +1,6 @@
 <template>
   <BlockChart>
-    <div class="flex h-[75px]">
+    <div class="flex h-[75px] justify-center">
       <!-- <div class="flex"> -->
       <div>
         <h2 class="text-white font-bold text-[20px]">
@@ -13,7 +13,7 @@
           <span class="ml-2" :style="style"> {{ change24h }} % </span>
         </div>
       </div>
-      <div class="text-center text-[30px] font-bold align-top leading-[30px] ml-2" :style="style">
+      <div class="text-center text-[30px] font-bold align-top leading-[30px] ml-4" :style="style">
         {{ handlerPersion() }}
       </div>
     </div>
