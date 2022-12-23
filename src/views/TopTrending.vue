@@ -2,7 +2,7 @@
   <BlockChart class="h-full">
     <template #title>
       <div class="text-center w-full">
-        <h2 class="text-white font-bold text-[20px] pt-[30px] pb-[10px]">
+        <h2 class="text-white font-bold text-[20px] pt-[20px] pb-[20px]">
           Top Trending Coins
         </h2>
       </div>
