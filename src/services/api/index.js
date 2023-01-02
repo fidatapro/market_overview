@@ -43,4 +43,4 @@ export const HEATMAP_V2_API = (data) =>
     },
   });
 export const HEATMAP_ASSET_API = () =>
-  axios.get("https://api.coincap.io/v2/assets");
+  axios.get("https://data.messari.io/api/v2/assets?with-metricsx-messari-api-key=df6545ea-787b-437a-b152-5a71b4d1e09b");

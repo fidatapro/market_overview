@@ -349,9 +349,10 @@ export default {
     async fetchSymbol() {
       let res = await HEATMAP_ASSET_API();
       res?.data?.data?.forEach((e) => {
+        let percent = e?.metrics?.market_data?.percent_change_usd_last_24_hours
         this.symbol[e.symbol] = {
-          value: handlerPersion(e.changePercent24Hr, true),
-          color: colorByPercent(e.changePercent24Hr),
+          value: handlerPersion(percent, true),
+          color: colorByPercent(percent),
         };
       });
     },
@@ -395,7 +396,7 @@ export default {
             }
           }
           if (parent) {
-            let change24h = this.symbol[e.code]
+            let change24h = this.symbol[e.code] && this.symbol[e.code].value
               ? this.symbol[e.code].value
               : roundValue(e.delta.day * 100) + " %";
 
