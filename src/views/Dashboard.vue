@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#16151a] w-full py-6 px-8">
+  <div class="bg-[#16151a] w-full">
     <div class="grid grid-cols-1 gap-4 mb-4">
       <Heatmap @BTC="(data) => (btc = data)" @ETH="(data) => (eth = data)" />
     </div>
